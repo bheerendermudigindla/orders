@@ -1,0 +1,73 @@
+The project is mainly focus on order management system. In this project we performed three activities.
+1.Create a order into Database.
+2.Get the all orders details.
+3.Update the existing order. 
+
+Test the service:
+
+Run:
+    =>  go run main.go
+
+1) Sample request and response of add order:
+
+Request:
+curl --location 'http://localhost:8080/orders' \
+--header 'Content-Type: application/json' \
+--data '{
+"id": "abcdef-987654",
+"status": "PENDING_INVOICE",
+"items": [{
+"id": "987654",
+"description": "ADDtocard",
+"price": 12.40,
+"quantity": 1
+}],
+"total": 12.40,
+"currencyUnit": "USD"
+}'
+
+Response:
+Order successfully created
+
+2)Sample request and response of getroder :
+
+Request:
+curl --location 'http://localhost:8080/orders'
+
+Reponse:
+[{
+"id": "abcdef-987654",
+"status": "PENDING_INVOICE",
+"items": [{
+"id": "987654",
+"description": "ADDtocard",
+"price": 12.40,
+"quantity": 1
+}],
+"total": 12.40,
+"currencyUnit": "USD"
+}]
+
+3)Sample request and response of Updateorder :
+Request:
+curl --location --request PUT 'http://localhost:8080/orders' \
+--header 'Content-Type: application/json' \
+--data '{
+"id": "abcdef-987654",
+"status": "Shipped",
+"items": [{
+"id": "987654",
+"description": "ADDtocard",
+"price": 50,
+"quantity": 1
+}],
+"total": 50,
+"currencyUnit": "USD"
+}'
+
+response:
+Order successfully updated
+
+
+
+

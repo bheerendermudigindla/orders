@@ -9,7 +9,7 @@ ENV GO111MODULE=on \
     TZ=Asia/Kolkata
     
 ###
-RUN mkdir -p /usr/local/go/src/sellerapp
+RUN mkdir -p /usr/local/go/src/orders
 
 COPY go.mod .
 COPY go.sum .
@@ -17,15 +17,15 @@ COPY go.sum .
 #Download Dependency
 RUN go mod download
  
-COPY . /usr/local/go/src/sellerapp
-WORKDIR /usr/local/go/src/sellerapp
+COPY . /usr/local/go/src/orders
+WORKDIR /usr/local/go/src/orders
  
 #Running the go service
-RUN go build -o sellerapp_order sellerapp_order.go
+RUN go build -o main main.go
 
-RUN cp -r /usr/local/go/src/sellerapp/sellerapp_order /sellerapp_order
+RUN cp -r /usr/local/go/src/orders/main /main
 
 RUN mkdir /deployer/
 RUN cp -r /usr/local/go/src/webapp-eventdatabuilder/deployer/git_details.txt /deployer/git_details.txt
  
-CMD ["sellerapp_order"]
+CMD ["main"]

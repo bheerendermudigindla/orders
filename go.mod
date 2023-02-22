@@ -1,4 +1,4 @@
-module sellerapp
+module Golang_crud
 
 go 1.20
 

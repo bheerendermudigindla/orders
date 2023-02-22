@@ -2,9 +2,9 @@
 The project is mainly focus on order management system. In this project we performed three activities.
 1.Create a order into Database.
 2.Get the all orders details.
-3.Update the existing order.
+3.Update the existing order. 
 
-To run this project : go run sellerapp_order.go
+To run this project : go run main.go
 
 Docker Commands: 
 Build: docker build -t app:v1 -f Dockerfile .
